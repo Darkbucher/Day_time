@@ -1,0 +1,113 @@
+/* Resetting default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Setting global font family */
+html {
+    font-family: "Poppins", sans-serif;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Container styles */
+.container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(-45deg, #ee7752, #3c92e7, #000101, #138f59);
+    background-size: 200% 200%; 
+    animation: gradient 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+/* Image styles */
+.container img {
+    max-width: 75%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Time display styles */
+#current-time {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 6vw; /* Responsive font size */
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+/* Date display styles */
+#current-date {
+    position: absolute;
+    top: 60%; /* Adjusted for spacing */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1vw; /* Responsive font size */
+    font-weight: 400;
+}
+
+/* Quote section styles */
+.quotes {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    bottom: 15%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+
+/* Responsive design for smaller screens */
+@media only screen and (max-width: 600px) {
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .container {
+       
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(-45deg, #ee7752, #3c92e7, #000101, #138f59);
+        background-size: 200% 200%; 
+        animation: gradient 15s ease infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        display: block;
+    }
+    .container img {
+        max-width: 100%;
+        object-fit: cover;
+        height: 100%; /* Maintain aspect ratio */
+        opacity: 0.2;
+    }
+
+    #current-time {
+        font-size: 8vw;
+    }
+
+    #current-date {
+        font-size: 6vw; /* Slightly larger for better readability */
+    }
+
+    .quotes {
+        font-size: 3vw; /* Adjusted for smaller screens */
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAY_TIME</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Default image -->
+        <img id="background-image" src="day-image.png">
+        <h1 id="current-time"></h1>
+        <h2 id="current-date"></h2>
+        <div class="quotes">
+            <p>TODAY IS THE DAY</p>
+            <h2>Time is moving</h2>
+        </div>
+    </div>
+
+<script>
+    let timeElement = document.getElementById("current-time");
+    let dateElement = document.getElementById("current-date");
+    let backgroundImage = document.getElementById("background-image");
+
+    // Function to update time, date, and background image
+    function updateTimeAndDate() {
+        let now = new Date();
+        let hour = now.getHours();
+        
+        // Update the time and date display
+        timeElement.innerHTML = now.toLocaleTimeString();
+        dateElement.innerHTML = now.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        // Change background image based on the time of day
+        if (hour >= 6 && hour < 18) { // Daytime image
+            backgroundImage.src = 'day-image.png';
+        } else { // Nighttime image
+            backgroundImage.src = 'night-image.jpg';
+        }
+    }
+
+    // Update time, date, and background every second
+    setInterval(updateTimeAndDate, 1000);
+
+    // Initial call to display time, date, and background immediately
+    updateTimeAndDate();
+</script>
+</body>
+</html>
