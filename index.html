@@ -1,49 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Interactive Time Dashboard with Weather, Music, and Falling Sand Game">
+    <meta name="keywords" content="time dashboard, weather, music player, falling sand game, interactive">
+    <meta name="author" content="Your Name">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Time Dashboard">
+    <meta property="og:title" content="Interactive Time Dashboard">
+    <meta property="og:description" content="A beautiful dashboard featuring time, weather, music, and an interactive falling sand game">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="origin">
     <title>DAY_TIME</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
-    <div class="container">
-        <!-- Default image -->
-        <img id="background-image" src="day-image.png">
-        <h1 id="current-time"></h1>
-        <h2 id="current-date"></h2>
-        <div class="quotes">
-            <p>TODAY IS THE DAY</p>
-            <h2>Time is moving</h2>
+    <div class="container" id="container" data-time="">
+        <div class="overlay"></div>
+        <div class="background-images">
+            <img id="sunrise-image" src="sunrise-image.jpg" alt="Sunrise" class="background-image">
+            <img id="morning-image" src="day-image.png" alt="Morning" class="background-image">
+            <img id="afternoon-image" src="afternoon-image.jpg" alt="Afternoon" class="background-image">
+            <img id="sunset-image" src="sunset-image.jpg" alt="Sunset" class="background-image">
+            <img id="night-image" src="night-image.jpg" alt="Night" class="background-image">
+        </div>
+        
+        <div class="content">
+            <div class="main-content">
+                <div class="greeting" id="greeting"></div>
+                <div class="time-date">
+                    <h1 id="current-time"></h1>
+                    <h2 id="current-date"></h2>
+                </div>
+            </div>
+            
+            <div class="bottom-content">
+                <div class="weather-info">
+                    <div class="weather-main">
+                        <div class="weather-icon">
+                            <i id="weather-icon" class="fas fa-cloud-sun"></i>
+                        </div>
+                        <div class="weather-details">
+                            <span id="temperature">--°C</span>
+                            <span id="weather-description">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="weather-extra">
+                        <div class="weather-item">
+                            <i class="fas fa-wind"></i>
+                            <span id="wind-speed">-- km/h</span>
+                        </div>
+                        <div class="weather-item">
+                            <i class="fas fa-tint"></i>
+                            <span id="humidity">--%</span>
+                        </div>
+                        <div class="weather-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="location">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quotes-container">
+                    <p id="quote-text">Loading quote...</p>
+                    <p id="quote-author"></p>
+                </div>
+
+                <!-- Audio Player Section -->
+                <div class="audio-player">
+                    <audio id="audioPlayer" src="audio.mp3" controls></audio>
+                </div>
+
+                <!-- Falling Sand Game Section -->
+                <div class="game-container">
+                    <div class="game-header">
+                        <h3>Falling Sand Game</h3>
+                        <div class="game-controls">
+                            <button id="clearBtn" class="game-btn">Clear</button>
+                            <select id="elementSelect" class="game-select">
+                                <option value="sand">Sand</option>
+                                <option value="water">Water</option>
+                                <option value="stone">Stone</option>
+                            </select>
+                            <button id="fullscreenBtn" class="game-btn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 
-<script>
-    let timeElement = document.getElementById("current-time");
-    let dateElement = document.getElementById("current-date");
-    let backgroundImage = document.getElementById("background-image");
-
-    // Function to update time, date, and background image
-    function updateTimeAndDate() {
-        let now = new Date();
-        let hour = now.getHours();
-        
-        // Update the time and date display
-        timeElement.innerHTML = now.toLocaleTimeString();
-        dateElement.innerHTML = now.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-        // Change background image based on the time of day
-        if (hour >= 6 && hour < 18) { // Daytime image
-            backgroundImage.src = 'day-image.png';
-        } else { // Nighttime image
-            backgroundImage.src = 'night-image.jpg';
-        }
-    }
-
-    // Update time, date, and background every second
-    setInterval(updateTimeAndDate, 1000);
-
-    // Initial call to display time, date, and background immediately
-    updateTimeAndDate();
-</script>
+    <script src="script.js"></script>
+    <script src="sandgame.js"></script>
 </body>
 </html>
