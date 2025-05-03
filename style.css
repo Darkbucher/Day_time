@@ -1,113 +1,423 @@
-/* Resetting default styles */
+/* style.css */
+
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Setting global font family */
-html {
-    font-family: "Poppins", sans-serif;
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-/* Container styles */
+/* Container */
 .container {
+    position: relative;
     width: 100%;
-    height: 100vh;
-    background: linear-gradient(-45deg, #ee7752, #3c92e7, #000101, #138f59);
-    background-size: 200% 200%; 
-    animation: gradient 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Background images */
+.background-images {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 1s ease;
+    z-index: 1;
+}
+
+/* Content */
+.content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Main Content */
+.main-content {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.greeting {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #f6dcdc;
+    padding-top: 10%;
+}
+
+.time-date h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.time-date h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+    padding-bottom: 10%;
+}
+
+/* Weather Info */
+.weather-info {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.weather-main {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-
-/* Image styles */
-.container img {
-    max-width: 75%;
-    height: auto; /* Maintain aspect ratio */
+.weather-icon {
+    font-size: 2.5rem;
+    color: #ffffff;
 }
 
-/* Time display styles */
-#current-time {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-size: 6vw; /* Responsive font size */
-    font-weight: 600;
-    letter-spacing: 3px;
+.weather-details {
+    text-align: left;
 }
 
-/* Date display styles */
-#current-date {
-    position: absolute;
-    top: 60%; /* Adjusted for spacing */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-size: 1vw; /* Responsive font size */
-    font-weight: 400;
+.weather-extra {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-/* Quote section styles */
-.quotes {
+.weather-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Quotes */
+.quotes-container {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    
+}
+
+#quote-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: #c89797;
+}
+
+#quote-author {
+    font-size: 1rem;
+    opacity: 0.8;
+    color: #c9d8c2;
+}
+
+/* Audio Player */
+.audio-player {
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 18px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
     width: 100%;
+    justify-content: center;
+}
+
+.control-btn {
+    background: linear-gradient(135deg, #f6dcdc 0%, #c89797 100%);
+    border: none;
+    color: #2d2d2d;
+    font-size: 1.6rem;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+.control-btn:active {
+    transform: scale(0.95);
+}
+.control-btn:hover {
+    background: linear-gradient(135deg, #c89797 0%, #f6dcdc 100%);
+}
+
+.progress-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 120px;
+    max-width: 300px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress {
     position: absolute;
-    text-align: center;
-    bottom: 15%;
-    color: #fff;
-    font-size: 20px;
+    height: 100%;
+    background: linear-gradient(90deg, #c89797 0%, #f6dcdc 100%);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.time-info {
+    display: flex;
+    justify-content: space-between;
+    color: #f6dcdc;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 2px;
+}
+
+/* Falling Sand Game */
+.game-container {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.game-header h3 {
+    font-size: 1.2rem;
     font-weight: 500;
 }
 
+.game-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
 
+.game-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-/* Responsive design for smaller screens */
-@media only screen and (max-width: 600px) {
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    
+.game-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.game-select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-select:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#canvas {
+    width: 100%;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    cursor: crosshair;
+    display: block;
+}
+
+/* Fullscreen Styles */
+.game-container:fullscreen {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container:fullscreen .game-header {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.game-container:fullscreen #canvas {
+    width: 100%;
+    height: calc(100vh - 100px);
+    max-width: 1200px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
     .container {
-       
-        width: 100%;
-        height: 100vh;
-        background: linear-gradient(-45deg, #ee7752, #3c92e7, #000101, #138f59);
-        background-size: 200% 200%; 
-        animation: gradient 15s ease infinite;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        display: block;
-    }
-    .container img {
-        max-width: 100%;
-        object-fit: cover;
-        height: 100%; /* Maintain aspect ratio */
-        opacity: 0.2;
+        padding: 1rem;
     }
 
-    #current-time {
-        font-size: 8vw;
+    .main-content {
+        padding: 1.5rem;
     }
 
-    #current-date {
-        font-size: 6vw; /* Slightly larger for better readability */
+    .greeting {
+        font-size: 2rem;
     }
 
-    .quotes {
-        font-size: 3vw; /* Adjusted for smaller screens */
+    .time-date h1 {
+        font-size: 3rem;
     }
+
+    .time-date h2 {
+        font-size: 1.2rem;
+    }
+
+    .weather-info,
+    .quotes-container,
+    .audio-player,
+    .game-container {
+        padding: 1rem;
+    }
+
+    #canvas {
+        height: 300px;
+    }
+
+    .game-controls {
+        flex-wrap: wrap;
+    }
+
+    .game-btn,
+    .game-select {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .audio-player {
+        padding: 1rem;
+        max-width: 98vw;
+    }
+    .player-controls {
+        gap: 1rem;
+    }
+    .control-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    .progress-container {
+        min-width: 80px;
+        max-width: 180px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease forwards;
 }
